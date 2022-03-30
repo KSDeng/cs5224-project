@@ -1,11 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
-import GetRequestComponent from './Components/GetRequestComponent';
+import Button from 'react-bootstrap/Button';
+import SellCarPanel from './Components/SellCarPanel';
 
 function App() {
   return (
-  	<GetRequestComponent />
+  	//<Button variant="primary">Primary</Button>
+	<SellCarPanel />
   );
 }
 
