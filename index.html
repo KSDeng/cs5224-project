@@ -522,7 +522,7 @@
 
 	$(document).ready(function(){
 		$("#submitSearch").click(function(){
-			let requestUrl = 'http://44.202.253.122:5000/get_cars';
+			let requestUrl = 'my-elb-01-1282838126.us-east-1.elb.amazonaws.com/get_cars';
 
 			let formEle = document.getElementById('boxpanel');
 			let formData = new FormData(formEle);
