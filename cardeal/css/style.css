@@ -1448,7 +1448,7 @@ h6 {line-height: 1.5em;}
 				width: 220px;
 			}
 
-			.recent-list-cars li:nth-child(3n) {margin-right: 0;}
+			.recent-list-cars li:nth-child(4n) {margin-right: 0;}
 
 				.recent-list-cars li .detailed {
 					position: relative;
