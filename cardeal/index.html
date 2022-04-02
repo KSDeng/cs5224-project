@@ -161,57 +161,48 @@
 				
 				<fieldset>
 					<label for="manufacturer">Manufacturer:</label>
-					<select id="manufacturer" name="manufacturer">
-						<option value="0" />Any
-						<option value="1" />Lorem
-						<option value="2" />Ipsum
-					</select>
+					<input type="text" name="manufacturer"><br>
+				</fieldset>
+				
+				<fieldset id="productionYearField">
+					<label for="productionYear">Production year:</label>
+					From &nbsp &nbsp <input type="text" name="min_productionYear"> &nbsp &nbsp
+					to &nbsp <input type="text" name="max_productionYear"><br>
+				</fieldset>
+
+				<fieldset id="typeOfVehicleField">
+					<label for="typeOfVehicle">Type of vehicle:</label>
+					<input type="text" name="typeOfVehicle"><br>
 				</fieldset>
 				
 				<fieldset>
-					<label for="minprice">Min Price:</label>
-					<select id="minprice" name="minprice">
-						<option value="0" />No min
-						<option value="1" />Lorem
-						<option value="2" />Ipsum
-					</select>
-				</fieldset>
-				
-				<fieldset>
-					<label for="maxprice">Max Price:</label>
-					<select id="maxprice" name="maxprice">
-						<option value="0" />No max
-						<option value="1" />Lorem
-						<option value="2" />Ipsum
-					</select>
-				</fieldset>
-				
-				<fieldset>
-					<label for="trans">Trans:</label>
+					<label for="trans">Transmission:</label>
 					<select id="trans" name="trans">
-						<option value="0" />Any
-						<option value="1" />Lorem
-						<option value="2" />Ipsum
+						<option value="0" />Auto
+						<option value="1" />Manual
 					</select>
 				</fieldset>
 				
 				<fieldset>
 					<label for="mileage">Mileage:</label>
-					<select id="mileage" name="mileage">
-						<option value="0" />Any
-						<option value="1" />Lorem
-						<option value="2" />Ipsum
-					</select>
+					<input type="text" name="mileage">
 				</fieldset>
 				
 				<fieldset>
-					<label for="bodytype">Body Type:</label>
-					<select id="bodytype" name="bodytype">
+					<label for="bodytype">Min price:</label>
+					<input type="text" name="minPrice">
+				</fieldset>
+
+				<fieldset>
+					<label for="bodytype">Max price:</label>
+					<input type="text" name="maxPrice">
+					<!-- <select id="bodytype" name="bodytype">
 						<option value="0" />Any
 						<option value="1" />Lorem
 						<option value="2" />Ipsum
-					</select>
+					</select> -->
 				</fieldset>
+
 				
 				<div class="clear"></div>
 				<button id="submitSearch" class="submit-search" type="submit">Search</button>

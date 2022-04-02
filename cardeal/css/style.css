@@ -1044,6 +1044,24 @@ h6 {line-height: 1.5em;}
 			margin-bottom: 8px;
 			margin-right: 32px;
 		}
+
+		.form-panel #productionYearField {
+			float: left;
+			margin-bottom: 8px;
+			margin-right: 32px;
+			width: 248px;
+		}
+
+		.form-panel #typeOfVehicleField {
+			float: left;
+			margin-bottom: 8px;
+			margin-right: 32px;
+			width: 248px;
+		}
+
+		.form-panel #productionYearField input {width: 60px;}
+
+		.form-panel #typeOfVehicleField input {width: 224px;}
 		
 		.form-panel fieldset:nth-child(2n-1) {margin-right: 0;}
 			
@@ -1058,8 +1076,14 @@ h6 {line-height: 1.5em;}
 				float: none;
 				width: 248px;
 			}
+
+			.form-panel fieldset:first-child input {
+				float: none;
+				width: 226px;
+			}
 			
 			.top-panel .form-panel select {width: 108px;}
+			.top-panel .form-panel input {width: 84px;}
 			
 			#sidebar .form-panel fieldset select {width: 180px;}
 			
@@ -1822,6 +1846,8 @@ article.entry:first-child {margin-top: 0;}
 	.sbr #sidebar {float: right;}
 	
 	.sbl #sidebar {float: left;}
+
+	.sbm #sidebar {position:relative; left:25%; float:left;}
 
 	/* -------------------------------------------------- */
 	/*	Widgets
