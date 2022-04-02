@@ -219,6 +219,19 @@
 		<!-- - - - - - - - - - - - - - - Container - - - - - - - - - - - - - - - - -->	
 
 		<section class="container sbr clearfix">
+			<section id="content" class="sixteen columns">
+				
+				<div class="recent-list-cars">
+					
+					<h3 class="widget-title">Search Result</h3>
+
+					<ul id="searchResultList" class="clearfix">
+
+					</ul>
+					
+				</div><!--/ .recent-list-cars-->
+				
+			</section><!--/ #search result-->
 
 			<!-- - - - - - - - - - - - - - - Content - - - - - - - - - - - - - - - - -->		
 
@@ -414,6 +427,31 @@
 		});
 	});
 
+	function createLi(imgUrl, manufacturer, mileage, price) {
+		var li_ele = '<li>';
+		var img_ele = '<a class="single-image picture"> \
+							<img src="' + imgUrl + '" alt="" /> \
+						</a>';
+		var title_ele = '<a class="list-meta"> \
+							<h6 class="title-list-item">' + manufacturer +
+							'</h6></a>';
+		var detail_ele = '<div class="detailed"> \
+							<span class="cost">$' + price + '</span> \
+							<span>1.3i TS 5Dr</span><br/> \
+							<b>' + mileage + 'Miles</b></div>';
+		var detail_button_ele = '<a class="button orange">Details</a>';
+		var compare_ele = '<label class="compare"><input type="checkbox" />Compare</label>';
+
+		li_ele += img_ele;
+		li_ele += title_ele;
+		li_ele += detail_ele;
+		li_ele += detail_button_ele;
+		li_ele += compare_ele;
+		li_ele += '</li>';
+
+		return li_ele;
+	}
+
 	$(document).ready(function(){
 		$("#submitSearch").click(function(){
 			let requestUrl = 'http://44.202.253.122:5000/get_cars';
@@ -448,7 +486,20 @@
 				success: function(response) {
 					console.log(response);
 					console.log('search success');
-					$("#testButton").show();
+					// $("#testButton").show();
+					let cars = response['cars'];
+					for (const car of cars) {
+						console.log(car);
+						let resImageUrl = car['imageUrl'];
+						let resManu = car['manufacturer'];
+						let resPrice = car['price'];
+						let resMileage = car['mileage'];
+						let liStr = createLi(resImageUrl, resManu, resMileage, resPrice);
+
+						let resList = document.getElementById('searchResultList');
+						resList.append(liStr);
+					}
+
 				}.bind(this),
 				error:function(jqXHR, exception) {
 					console.log('search exception');
