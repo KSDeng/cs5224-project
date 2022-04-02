@@ -428,28 +428,77 @@
 	});
 
 	function createLi(imgUrl, manufacturer, mileage, price) {
-		var li_ele = '<li>';
-		var img_ele = '<a class="single-image picture"> \
-							<img src="' + imgUrl + '" alt="" /> \
-						</a>';
-		var title_ele = '<a class="list-meta"> \
-							<h6 class="title-list-item">' + manufacturer +
-							'</h6></a>';
-		var detail_ele = '<div class="detailed"> \
-							<span class="cost">$' + price + '</span> \
-							<span>1.3i TS 5Dr</span><br/> \
-							<b>' + mileage + 'Miles</b></div>';
-		var detail_button_ele = '<a class="button orange">Details</a>';
-		var compare_ele = '<label class="compare"><input type="checkbox" />Compare</label>';
+		var li = document.createElement("li");
 
-		li_ele += img_ele;
-		li_ele += title_ele;
-		li_ele += detail_ele;
-		li_ele += detail_button_ele;
-		li_ele += compare_ele;
-		li_ele += '</li>';
+		var a1 = document.createElement("a");
+		a1.setAttribute("class", "single-image picture");
+		var img = document.createElement("img");
+		img.setAttribute("src", imgUrl);
+		a1.appendChild(img);
 
-		return li_ele;
+		var a2 = document.createElement("a");
+		a2.setAttribute("class", "list-meta");
+
+		var h6 = document.createElement("h6");
+		h6.setAttribute("class", "title-list-item");
+		h6.appendChild(document.createTextNode(manufacturer));
+		a2.appendChild(h6);
+
+		var div = document.createElement("div");
+		div.setAttribute("class", "detailed");
+
+		var span1 = document.createElement("span");
+		span1.setAttribute("class", "cost");
+		span1.appendChild(document.createTextNode('$' + price));
+		var span2 = document.createElement("span");
+		span2.appendChild(document.createTextNode('1.3i TS 5Dr'));
+		var b = document.createElement("b");
+		b.appendChild(document.createTextNode(mileage + 'Miles'));
+
+		div.appendChild(span1);
+		div.appendChild(span2);
+		div.appendChild(b);
+
+		var a3 = document.createElement("a");
+		a3.setAttribute("class", "button orange");
+		a3.appendChild(document.createTextNode("Details"));
+
+		var label = document.createElement("label");
+		label.setAttribute("class", "compare");
+		var input = document.createElement("input");
+		input.setAttribute("type", "checkbox");
+		label.appendChild(input);
+		label.appendChild(document.createTextNode("Compare"));
+
+		li.appendChild(a1);
+		li.appendChild(a2);
+		li.appendChild(div);
+		li.appendChild(a3);
+		li.appendChild(label); 
+
+		// var li_ele = '<li>';
+		// var img_ele = '<a class="single-image picture"> \
+		// 					<img src="' + imgUrl + '" alt="" /> \
+		// 				</a>';
+		// var title_ele = '<a class="list-meta"> \
+		// 					<h6 class="title-list-item">' + manufacturer +
+		// 					'</h6></a>';
+		// var detail_ele = '<div class="detailed"> \
+		// 					<span class="cost">$' + price + '</span> \
+		// 					<span>1.3i TS 5Dr</span><br/> \
+		// 					<b>' + mileage + 'Miles</b></div>';
+		// var detail_button_ele = '<a class="button orange">Details</a>';
+		// var compare_ele = '<label class="compare"><input type="checkbox" />Compare</label>';
+
+		// li_ele += img_ele;
+		// li_ele += title_ele;
+		// li_ele += detail_ele;
+		// li_ele += detail_button_ele;
+		// li_ele += compare_ele;
+		// li_ele += '</li>';
+
+		// return li_ele;
+		return li;
 	}
 
 	$(document).ready(function(){
@@ -494,13 +543,14 @@
 						let resManu = car['title'];
 						let resPrice = car['price'];
 						let resMileage = car['mileage'];
-						let liStr = createLi(resImageUrl, resManu, resMileage, resPrice);
-						console.log(liStr);
+						let li = createLi(resImageUrl, resManu, resMileage, resPrice);
+						console.log(li);
 						
 						let resList = document.getElementById('searchResultList');
-						resList.append(liStr);
-						
-						window.location.reload(true);
+						resList.appendChild(li);
+						// resList.append(liStr);
+
+						// window.location.reload(true);
 					}
 
 				}.bind(this),
