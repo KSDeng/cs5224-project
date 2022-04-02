@@ -154,10 +154,11 @@
 		<!-- - - - - - - - - - - Search Panel - - - - - - - - - - - - - -->
 		
 		<div class="widget_custom_search">
+			<button id="testButton">test</button>
 			
 			<h3 class="widget-title">Quick Search</h3>
 			
-			<form action="/" id="boxpanel" class="form-panel" />
+			<form action="" id="boxpanel" class="form-panel" target="nm_iframe">
 				
 				<fieldset>
 					<label for="manufacturer">Manufacturer:</label>
@@ -189,25 +190,21 @@
 				</fieldset>
 				
 				<fieldset>
-					<label for="bodytype">Min price:</label>
+					<label for="minPrice">Min price:</label>
 					<input type="text" name="minPrice">
 				</fieldset>
 
 				<fieldset>
-					<label for="bodytype">Max price:</label>
+					<label for="maxPrice">Max price:</label>
 					<input type="text" name="maxPrice">
-					<!-- <select id="bodytype" name="bodytype">
-						<option value="0" />Any
-						<option value="1" />Lorem
-						<option value="2" />Ipsum
-					</select> -->
 				</fieldset>
 
 				
 				<div class="clear"></div>
-				<button id="submitSearch" class="submit-search" type="submit">Search</button>
+				<button id="submitSearch" class="submit-search">Search</button>
 				
 			</form><!--/ .form-panel-->
+			<iframe id="id_iframe" name="nm_iframe" style="display: none;"></iframe>
 			
 		</div><!--/ .main-search-panel-->
 		
@@ -412,6 +409,42 @@
 <script src="js/jquery.gmap.min.js"></script>
 <script src="js/custom.js"></script>
 <script>
+	console.log('hello');
+	$(document).ready(function(){
+		$("#testButton").click(function(){
+			console.log('test button clicked');
+		});
+	});
+
+	$(document).ready(function(){
+		$("#submitSearch").click(function(){
+			let formEle = document.getElementById('boxpanel');
+			let formData = new FormData(formEle);
+
+			let manufacturer = formData.get('manufacturer');
+			let minProdYear = formData.get('min_productionYear');
+			let maxProdYear = formData.get('max_productionYear');
+
+			let typeOfVehicle = formData.get('typeOfVehicle');
+			let transamission = formData.get('trans');
+			let mileage = formData.get('mileage');
+			let minPrice = formData.get('minPrice');
+			let maxPrice = formData.get('maxPrice');
+
+			$.ajax({
+				url: '',
+				type: 'GET',
+				success: function(response) {
+					const res = JSON.parse(response);
+					console.log(res);
+				}.bind(this),
+				error:function(jqXHR, exception) {
+					console.log(exception);
+				}.bind(this)
+			});
+		});
+	});
+
 	$(document).ready(function(){
 		$("#buttonCalculate").click(function(){
 			console.log('buttonCalculate clicked!');
