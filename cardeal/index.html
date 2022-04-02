@@ -154,7 +154,7 @@
 		<!-- - - - - - - - - - - Search Panel - - - - - - - - - - - - - -->
 		
 		<div class="widget_custom_search">
-			<button id="testButton">test</button>
+			<button id="testButton" style="display:none">test</button>
 			
 			<h3 class="widget-title">Quick Search</h3>
 			
@@ -179,8 +179,8 @@
 				<fieldset>
 					<label for="trans">Transmission:</label>
 					<select id="trans" name="trans">
-						<option value="0" />Auto
-						<option value="1" />Manual
+						<option value="Auto" />Auto
+						<option value="Manual" />Manual
 					</select>
 				</fieldset>
 				
@@ -405,8 +405,6 @@
 	<script src="js/selectivizr-and-extra-selectors.min.js"></script>
 <![endif]-->
 <script src="sliders/flexslider/jquery.flexslider-min.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script src="js/jquery.gmap.min.js"></script>
 <script src="js/custom.js"></script>
 <script>
 	console.log('hello');
@@ -418,6 +416,8 @@
 
 	$(document).ready(function(){
 		$("#submitSearch").click(function(){
+			let requestUrl = 'http://44.202.253.122:5000/get_cars';
+
 			let formEle = document.getElementById('boxpanel');
 			let formData = new FormData(formEle);
 
@@ -426,57 +426,34 @@
 			let maxProdYear = formData.get('max_productionYear');
 
 			let typeOfVehicle = formData.get('typeOfVehicle');
-			let transamission = formData.get('trans');
+			
+			let transmission = document.getElementById('trans').value;
 			let mileage = formData.get('mileage');
 			let minPrice = formData.get('minPrice');
 			let maxPrice = formData.get('maxPrice');
 
 			$.ajax({
-				url: '',
-				type: 'GET',
+				url: requestUrl,
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					"title": manufacturer,
+					"manufactured_max": maxProdYear,
+					"manufactured_min": minProdYear,
+					"type_of_vehicle": typeOfVehicle,
+					"transmission": transmission,
+					"price_max": maxPrice,
+					"price_min": minPrice
+				},
 				success: function(response) {
 					const res = JSON.parse(response);
+					console.log('search success');
 					console.log(res);
+					$("#testButton").show();
 				}.bind(this),
 				error:function(jqXHR, exception) {
+					console.log('search exception');
 					console.log(exception);
-				}.bind(this)
-			});
-		});
-	});
-
-	$(document).ready(function(){
-		$("#buttonCalculate").click(function(){
-			console.log('buttonCalculate clicked!');
-
-			$.ajax({
-				url: 'http://localhost:8080/helloWorld',
-				type: 'GET',
-				success: function(response) {
-					const res = JSON.parse(response);
-					console.log(res);
-					this.setState({
-						text: res.text
-					});
-				}.bind(this),
-				error: function(jqXHR, exception) {
-					var msg = '';
-			        if (jqXHR.status === 0) {
-			            msg = 'Not connect.\n Verify Network.';
-			        } else if (jqXHR.status == 404) {
-			            msg = 'Requested page not found. [404]';
-			        } else if (jqXHR.status == 500) {
-			            msg = 'Internal Server Error [500].';
-			        } else if (exception === 'parsererror') {
-			            msg = 'Requested JSON parse failed.';
-			        } else if (exception === 'timeout') {
-			            msg = 'Time out error.';
-			        } else if (exception === 'abort') {
-			            msg = 'Ajax request aborted.';
-			        } else {
-			            msg = 'Uncaught Error.\n' + jqXHR.responseText;
-			        }
-					// console.log("Error");
 				}.bind(this)
 			});
 		});
