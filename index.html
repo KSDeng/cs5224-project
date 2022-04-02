@@ -529,15 +529,22 @@
 			let formData = new FormData(formEle);
 
 			let manufacturer = formData.get('manufacturer');
-			let minProdYear = parseInt(formData.get('min_productionYear'));
-			let maxProdYear = parseInt(formData.get('max_productionYear'));
+			var minProdYear = parseInt(formData.get('min_productionYear'));
+			minProdYear = isNaN(minProdYear) ? 0 : minProdYear;
+			var maxProdYear = parseInt(formData.get('max_productionYear'));
+			maxProdYear = isNaN(maxProdYear) ? 0 : maxProdYear;
 
 			let typeOfVehicle = formData.get('typeOfVehicle');
 			
 			let transmission = document.getElementById('trans').value;
-			let mileage = parseInt(formData.get('mileage'));
-			let minPrice = parseInt(formData.get('minPrice'));
-			let maxPrice = parseInt(formData.get('maxPrice'));
+			var mileage = parseInt(formData.get('mileage'));
+			mileage = isNaN(mileage) ? 0 : mileage;
+
+			var minPrice = parseInt(formData.get('minPrice'));
+			minPrice = isNaN(minPrice) ? 0 : minPrice;
+
+			var maxPrice = parseInt(formData.get('maxPrice'));
+			maxPrice = isNaN(maxPrice) ? 0 : maxPrice;
 
 			$.ajax({
 				url: requestUrl,
