@@ -529,15 +529,15 @@
 			let formData = new FormData(formEle);
 
 			let manufacturer = formData.get('manufacturer');
-			let minProdYear = formData.get('min_productionYear');
-			let maxProdYear = formData.get('max_productionYear');
+			let minProdYear = parseInt(formData.get('min_productionYear'));
+			let maxProdYear = parseInt(formData.get('max_productionYear'));
 
 			let typeOfVehicle = formData.get('typeOfVehicle');
 			
 			let transmission = document.getElementById('trans').value;
-			let mileage = formData.get('mileage');
-			let minPrice = formData.get('minPrice');
-			let maxPrice = formData.get('maxPrice');
+			let mileage = parseInt(formData.get('mileage'));
+			let minPrice = parseInt(formData.get('minPrice'));
+			let maxPrice = parseInt(formData.get('maxPrice'));
 
 			$.ajax({
 				url: requestUrl,
@@ -545,6 +545,7 @@
 				dataType: 'json',
 				data: {
 					"title": manufacturer,
+					"mileage": mileage,
 					"manufactured_max": maxProdYear,
 					"manufactured_min": minProdYear,
 					"type_of_vehicle": typeOfVehicle,
