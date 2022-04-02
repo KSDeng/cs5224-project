@@ -486,16 +486,17 @@
 				success: function(response) {
 					console.log(response);
 					console.log('search success');
-					// $("#testButton").show();
+					
 					let cars = response['cars'];
 					for (const car of cars) {
 						console.log(car);
-						let resImageUrl = car['imageUrl'];
-						let resManu = car['manufacturer'];
+						let resImageUrl = car['URL'];
+						let resManu = car['title'];
 						let resPrice = car['price'];
 						let resMileage = car['mileage'];
 						let liStr = createLi(resImageUrl, resManu, resMileage, resPrice);
-
+						console.log(liStr);
+						
 						let resList = document.getElementById('searchResultList');
 						resList.append(liStr);
 					}
