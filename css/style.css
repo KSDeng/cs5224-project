@@ -1847,7 +1847,7 @@ article.entry:first-child {margin-top: 0;}
 	
 	.sbl #sidebar {float: left;}
 
-	.sbm #sidebar {position:relative; left:25%; float:left;}
+	.sbm #sidebar {position:relative; left:30%; float:left;}
 
 	/* -------------------------------------------------- */
 	/*	Widgets
@@ -1900,7 +1900,7 @@ article.entry:first-child {margin-top: 0;}
 					.widget_loan_calculator .entry-loan table td {padding: 0 3px;}
 
 						.widget_loan_calculator input[type="text"] {
-							width: 25px;
+							width: 60%;
 							margin: 0 0 10px 9px;
 						}
 				
