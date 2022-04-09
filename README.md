@@ -24,6 +24,8 @@ The frontend is implemented using HTML, Javascript and CSS.
 
    **Be sure to give SSH, HTTP and HTTPS inbound rules to the security group of the instance.**
 
+   ![](https://github.com/KSDeng/cs5224-project/blob/master/images/security-group-config.jpg?raw=true)
+
    
 
 2. Log in to the running instance using *ssh*
@@ -50,7 +52,9 @@ The frontend is implemented using HTML, Javascript and CSS.
    git clone git@github.com:KSDeng/cs5224-project.git
    ```
 
+   ![](https://github.com/KSDeng/cs5224-project/blob/master/images/project-path.jpg?raw=true)
 
+   
 
 5. Start apache server
 
@@ -66,5 +70,5 @@ The frontend is implemented using HTML, Javascript and CSS.
    instance-public-ipv4-address/cs5224-project/index.html
    ```
 
-
+​	![](https://github.com/KSDeng/cs5224-project/blob/master/images/homepage-screenshot.jpg?raw=true)
 
